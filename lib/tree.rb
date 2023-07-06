@@ -39,10 +39,13 @@ class Tree
       return node.right if node.left.nil?
       return node.left if node.right.nil?
 
+      is_root = node == @root
       temp = node
       node = min_value(temp.right)
       node.right = delete_min(temp.right)
       node.left = temp.left
+
+      @root = node if is_root
     end
     node
   end
